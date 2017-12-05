@@ -5,13 +5,6 @@ import '../App.css';
 import Header from '../layouts/header.js'
 import Main from '../layouts/main.js'
 
-/*const App = () => (
-  <div>
-    <Header />
-    <Main />
-  </div>
-);*/
-
 class App extends Component {
 	render() {
 
@@ -34,5 +27,4 @@ class App extends Component {
 	}
 }
 
-export default translate('translations')(App);
-//export default App;
+export default translate('common')(App);
