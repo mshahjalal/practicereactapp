@@ -16,8 +16,15 @@ class App extends Component {
 
 		return (
 			<div>
-				<button onClick={() => changeLanguage('bd')}>Bangla</button>
-          		<button onClick={() => changeLanguage('en')}>English</button>
+				<div class="form-group">
+					<button class="btn btn-primary" onClick={() => changeLanguage('bd')}>Bangla</button>
+
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-success" onClick={() => changeLanguage('en')}>English</button>
+				</div>
+				
+          		
     			<Header />
     			<h2>{t('home')}</h2>
     			<div>{t('labels.name')}</div>
