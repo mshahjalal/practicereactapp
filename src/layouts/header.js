@@ -22,7 +22,7 @@ class Header extends Component {
 		const { t, i18n } = this.props;	    
 
 		return (
-			<header>
+			<header class="header">
 			    <nav>
 			      <ul>
 			        <li><Link to='/'>Home</Link></li>

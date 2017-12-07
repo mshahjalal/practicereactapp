@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './i18n.js';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import "./style.scss";
 
 ReactDOM.render(
 	<BrowserRouter>

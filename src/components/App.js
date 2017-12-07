@@ -18,7 +18,6 @@ class App extends Component {
 			<div>
 				<div class="form-group">
 					<button class="btn btn-primary" onClick={() => changeLanguage('bd')}>Bangla</button>
-
 				</div>
 				<div class="form-group">
 					<button type="button" class="btn btn-success" onClick={() => changeLanguage('en')}>English</button>
