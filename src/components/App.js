@@ -15,7 +15,7 @@ class App extends Component {
 	    }
 
 		return (
-			<div>
+			<div class="app-main">
 				<div class="form-group">
 					<button class="btn btn-primary" onClick={() => changeLanguage('bd')}>Bangla</button>
 				</div>
