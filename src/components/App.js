@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate, Trans } from 'react-i18next';
 //import logo from '../logo.svg';
-import '../App.css';
+//import '../App.css';
 import Header from '../layouts/header.js'
 import Main from '../layouts/main.js'
 

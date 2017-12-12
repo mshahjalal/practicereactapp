@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
-import './index.css';
+//import './app.scss';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import './i18n.js';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import "./style.scss";
+//import 'bootstrap/dist/css/bootstrap.css';
+
 
 ReactDOM.render(
 	<BrowserRouter>
