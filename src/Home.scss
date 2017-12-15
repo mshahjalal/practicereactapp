@@ -1,8 +1,19 @@
 .Home {
 	
-	background-color: red;
+	background-color: #ffe5e5;
 
 	h2 {
-		background-color: blue;
+		background-color: #ff9999;
 	}
+
+	ul {
+		list-style: none;
+		li {
+			padding: 10px;
+		}
+	}
+
+	ol {
+		background-color: #cce5ff;
+	}	
 }
