@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header/Header.js';
 import Home from './Home';
+import Footer from './components/Footer/Footer.js'
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
 
         
         <Home />
+        <Footer/>
       </div>
     );
   }
