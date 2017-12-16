@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <br />
-        
+
 
         <form action="/action_page.php">
           <div class="form-group">
@@ -32,6 +32,8 @@ class App extends Component {
 
         
         <Home />
+        
+        <br />
         <Footer/>
       </div>
     );

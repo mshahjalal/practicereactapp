@@ -11,8 +11,16 @@ class Home extends Component {
           <li>list 2</li>
           <li>list 3</li>
           <li>list 4</li>
-          <li>list 5</li>
+          <li>list 5</li>          
           <li>list 6</li>
+          <li>list 7</li>
+          <li>list 8</li>
+          <li>list 9</li>
+          <li>list 10</li>
+          <li>list 11</li>
+          <li>list 12</li>
+          <li>list 13</li>
+          <li>list 14</li>
         </ul>
 
         <ol>
