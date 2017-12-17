@@ -3,6 +3,13 @@ import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import resolvers from './resolvers';
 
 const typeDefs = `
+type User {
+  id: Int
+  firstName: String
+  lastName: String
+  email: String
+  userName: String
+}
 type Author {
   id: Int
   firstName: String
