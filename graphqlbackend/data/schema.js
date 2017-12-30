@@ -3,6 +3,12 @@ import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import resolvers from './resolvers';
 
 const typeDefs = `
+type Tenant {
+  id: Int
+  name: String,
+  subdomain: String
+  authors: [Author]
+}
 type Author {
   id: Int
   firstName: String
@@ -16,6 +22,8 @@ type Post {
   author: Author
 }
 type Query {
+  tenant(name: String, subdomain: String) : Tenant
+  allTenants: [Tenant]
   author(firstName: String, lastName: String): Author
   allAuthors: [Author]
 }
