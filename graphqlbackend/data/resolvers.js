@@ -1,4 +1,4 @@
-import { Author } from './connectors';
+import { Tenant, Author } from './connectors';
 
 const resolvers = {
   Query: {
