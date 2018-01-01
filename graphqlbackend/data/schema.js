@@ -13,6 +13,15 @@ type Tenant {
 type Branch {
   id: Int
   name: String
+  tenant: Tenant
+}
+type CashRegister {
+  id: Int
+  name: String
+}
+type PaymentType {
+  id: Int
+  name: String
 }
 type Author {
   id: Int

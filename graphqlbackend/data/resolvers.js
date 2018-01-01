@@ -1,4 +1,4 @@
-import { Tenant, Author, Branch } from './connectors';
+import { Tenant, Author, Branch, CashRegister, PaymentType } from './connectors';
 
 const resolvers = {
   Query: {
@@ -27,6 +27,11 @@ const resolvers = {
     },
     authors(tenant){
       return tenant.getAuthors();
+    }
+  },
+  Branch:{
+    tenant(branch){
+      return branch.getTenant();
     }
   },
   Author: {
