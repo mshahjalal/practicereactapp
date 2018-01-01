@@ -8,6 +8,11 @@ type Tenant {
   name: String,
   subdomain: String
   authors: [Author]
+  branches: [Branch]
+}
+type Branch {
+  id: Int
+  name: String
 }
 type Author {
   id: Int
@@ -24,6 +29,8 @@ type Post {
 type Query {
   tenant(name: String, subdomain: String) : Tenant
   allTenants: [Tenant]
+  branch(name: String): Branch
+  allBranches: [Branch]
   author(firstName: String, lastName: String): Author
   allAuthors: [Author]
 }

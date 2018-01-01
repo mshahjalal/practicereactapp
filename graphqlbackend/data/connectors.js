@@ -4,12 +4,17 @@ import _ from 'lodash';
 
 const db = new Sequelize('mypos', null, null, {
   dialect: 'sqlite',
+  operatorsAliases: Sequelize.Op,
   storage: './myshop.sqlite'
 });
 
 const TenantModel = db.define('tenant', {
   name: { type: Sequelize.STRING },
   subdomain: { type: Sequelize.STRING }
+});
+
+const BranchModel = db.define('branch', {
+  name: { type: Sequelize.STRING }
 });
 
 const AuthorModel = db.define('author', {
@@ -23,6 +28,7 @@ const PostModel = db.define('post', {
 });
 
 TenantModel.hasMany(AuthorModel);
+TenantModel.hasMany(BranchModel);
 AuthorModel.hasMany(PostModel);
 PostModel.belongsTo(AuthorModel);
 
@@ -34,22 +40,32 @@ db.sync({ force: true }).then(() => {
       name: casual.name,
       subdomain: casual.name
     }).then(tenant => {
-        return tenant.createAuthor({
-          firstName: casual.first_name,
-          lastName: casual.last_name
-        }).then(author => {
-          return author.createPost({
-            title: `A post by ${author.first_name}`,
-            text: casual.sentences(3)
-          });
+
+      _.times(5, () => tenant.createBranch({
+        tenantId: tenant.id,
+        name: casual.name
+      }));
+
+
+      tenant.createAuthor({
+        firstName: casual.first_name,
+        lastName: casual.last_name
+      }).then(author => {
+        return author.createPost({
+          title: `A post by ${author.first_name}`,
+          text: casual.sentences(3)
         });
+      });
+
+      return tenant;
     });
 
   });
 });
 
 const Tenant = db.models.tenant;
+const Branch = db.models.branch;
 const Author = db.models.author;
 const Post = db.models.post;
 
-export { Tenant, Author, Post };
+export { Tenant, Branch, Author, Post };

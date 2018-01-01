@@ -1,4 +1,4 @@
-import { Tenant, Author } from './connectors';
+import { Tenant, Author, Branch } from './connectors';
 
 const resolvers = {
   Query: {
@@ -8,6 +8,12 @@ const resolvers = {
     allTenants(){
       return Tenant.findAll();
     },
+    branch(_, args) {
+      return Branch.find({ where: args });
+    },
+    allBranches() {
+      return Branch.findAll();
+    },
     author(_, args) {
       return Author.find({ where: args });
     },
@@ -16,6 +22,9 @@ const resolvers = {
     }
   },
   Tenant: {
+    branches(tenant){
+      return tenant.getBranches();
+    },
     authors(tenant){
       return tenant.getAuthors();
     }
