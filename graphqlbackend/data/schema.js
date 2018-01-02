@@ -43,6 +43,9 @@ type Query {
   author(firstName: String, lastName: String): Author
   allAuthors: [Author]
 }
+type Mutation {
+  createAuthor(firstName: String, lastName: String) : Author
+}
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });

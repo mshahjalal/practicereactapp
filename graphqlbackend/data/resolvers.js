@@ -43,6 +43,9 @@ const resolvers = {
     author(post) {
       return post.getAuthor();
     }
+  },
+  Mutation {
+    createAuthor(parent, args) => Author.create(args);
   }
 };
 
