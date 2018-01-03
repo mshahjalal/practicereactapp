@@ -3,10 +3,30 @@ import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import resolvers from './resolvers';
 
 const typeDefs = `
-type Author {
+type Tenant {
   id: Int
-  firstName: String
-  lastName: String
+  name: String,
+  subdomain: String
+  authors: [Author]
+  branches: [Branch]
+}
+type Branch {
+  id: Int
+  name: String
+  tenant: Tenant
+}
+type CashRegister {
+  id: Int
+  name: String
+}
+type PaymentType {
+  id: Int
+  name: String
+}
+type Author {
+  id: Int!
+  firstName: String!
+  lastName: String!
   posts: [Post]
 }
 type Post {
@@ -16,8 +36,15 @@ type Post {
   author: Author
 }
 type Query {
+  tenant(name: String, subdomain: String) : Tenant
+  allTenants: [Tenant]
+  branch(name: String): Branch
+  allBranches: [Branch]
   author(firstName: String, lastName: String): Author
   allAuthors: [Author]
+}
+type Mutation {
+  createAuthor(firstName: String!, lastName: String!): Author
 }
 `;
 
