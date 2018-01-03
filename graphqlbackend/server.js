@@ -8,8 +8,8 @@ const GRAPHQL_PORT = 3000;
 const graphQLServer = express();
 
 graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
+	schema,
 	context:{Author},
-	schema
 }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 

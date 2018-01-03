@@ -24,9 +24,9 @@ type PaymentType {
   name: String
 }
 type Author {
-  id: Int
-  firstName: String
-  lastName: String
+  id: Int!
+  firstName: String!
+  lastName: String!
   posts: [Post]
 }
 type Post {
