@@ -9,7 +9,7 @@ const graphQLServer = express();
 
 graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
 	schema,
-	context:{Author},
+	context: {Author}
 }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 

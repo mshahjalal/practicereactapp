@@ -44,7 +44,7 @@ type Query {
   allAuthors: [Author]
 }
 type Mutation {
-  createAuthor(firstName: String!, lastName: String!): Author
+  createAuthor(firstName: String!, lastName: String!) : Author
 }
 `;
 

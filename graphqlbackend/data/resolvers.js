@@ -23,11 +23,7 @@ const resolvers = {
   },
   Mutation: {
     createAuthor: (_, data, {Author}) => {
-      //const newLink = Object.assign({id: links.length + 1}, data);
-      //links.push(newLink);
-      //return newLink;
-
-      return Author.create({data});
+      return Author.create(data);
     }
   },
   Tenant: {
