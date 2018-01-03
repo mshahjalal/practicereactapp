@@ -21,6 +21,15 @@ const resolvers = {
       return Author.findAll();
     }
   },
+  Mutation: {
+    createAuthor: (_, data, {Author}) => {
+      //const newLink = Object.assign({id: links.length + 1}, data);
+      //links.push(newLink);
+      //return newLink;
+
+      return Author.create({data});
+    }
+  },
   Tenant: {
     branches(tenant){
       return tenant.getBranches();
@@ -43,9 +52,6 @@ const resolvers = {
     author(post) {
       return post.getAuthor();
     }
-  },
-  Mutation {
-    createAuthor(parent, args) => Author.create(args);
   }
 };
 
