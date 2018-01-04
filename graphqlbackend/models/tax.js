@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-	const Branch = sequelize.define(
-	    'branch',
+	const Tax = sequelize.define(
+	    'tax',
 	    {
 	    	name: {
 	    		type: DataTypes.STRING
@@ -8,9 +8,9 @@ export default (sequelize, DataTypes) => {
 	    }
     );
 
-    Branch.associate = (models) => {
+    Tax.associate = (models) => {
 
     };
 
-    return Branch;
+    return Tax;
 };
