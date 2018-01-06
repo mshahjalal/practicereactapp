@@ -25,8 +25,10 @@ graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({
 }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-graphQLServer.listen(GRAPHQL_PORT, () =>
-  console.log(
-    `GraphiQL is now running on http://localhost:${GRAPHQL_PORT}/graphiql`
-  )
-);
+models.sequelize.sync({}).then(() => {
+	graphQLServer.listen(GRAPHQL_PORT, () =>
+	  console.log(
+	    `GraphiQL is now running on http://localhost:${GRAPHQL_PORT}/graphiql`
+	  )
+	);
+});

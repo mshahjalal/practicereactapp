@@ -3,7 +3,7 @@ import Sequelize from 'sequelize';
 const sequelize = new Sequelize('mypos2', null, null, {
   dialect: 'sqlite',
   operatorsAliases: Sequelize.Op,
-  storage: './myshop.sqlite'
+  storage: './myshop2.sqlite'
 });
 
 const models = {
