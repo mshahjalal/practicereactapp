@@ -1,15 +1,27 @@
 import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import bodyParser from 'body-parser';
-import schema from './data/schema';
-import {Author} from './data/connectors.js';
+//import schema from './data/schema';
+//import {Author} from './data/connectors.js';
+
+import { makeExecutableSchema } from 'graphql-tools';
+import path from 'path';
+import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
+import models from './models';
+const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
+const resolvers = mergeResolvers(fileLoader(path.join(__dirname, './resolvers')));
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+});
+
 
 const GRAPHQL_PORT = 3000;
 const graphQLServer = express();
 
 graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
 	schema,
-	context: {Author}
+	context: {models}
 }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
