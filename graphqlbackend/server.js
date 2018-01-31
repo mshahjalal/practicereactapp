@@ -16,7 +16,7 @@ const schema = makeExecutableSchema({
 });
 
 
-const GRAPHQL_PORT = 3000;
+const GRAPHQL_PORT = 4000;
 const graphQLServer = express();
 
 graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
