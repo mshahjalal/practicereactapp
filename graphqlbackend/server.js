@@ -1,6 +1,9 @@
 import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import bodyParser from 'body-parser';
+
+import cors from 'cors';
+
 //import schema from './data/schema';
 //import {Author} from './data/connectors.js';
 
@@ -19,11 +22,15 @@ const schema = makeExecutableSchema({
 const GRAPHQL_PORT = 4000;
 const graphQLServer = express();
 
+graphQLServer.use('*', cors({ origin: 'http://localhost:3000' }));
+
 graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ 
 	schema,
 	context: {models}
 }));
-graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+graphQLServer.use('/graphiql', graphiqlExpress({ 
+	endpointURL: '/graphql' 
+}));
 
 models.sequelize.sync({}).then(() => {
 	graphQLServer.listen(GRAPHQL_PORT, () =>
