@@ -7,10 +7,10 @@ const db = new Sequelize('mypos2', null, null, {
 });
 
 const models = {
-  User: db.import('./user.js'),
+  User: db.import('./user.js')/*,
   Tenant: db.import('./tenant.js'),
   Branch: db.import('./branch.js'),
-  Tax: db.import('./tax.js')
+  Tax: db.import('./tax.js')*/
 };
 
 Object.keys(models).forEach((modelName) => {

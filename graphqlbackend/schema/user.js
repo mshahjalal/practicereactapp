@@ -15,19 +15,19 @@ type Query {
 export default `
 
  type User {
-    id: Int!
+    id: Int
     username: String!
     email: String!
-    password: String!
+    password: String
   }
 
   type Query {
+    getUser(id: Int!): User!
     allUsers: [User!]!
-    getUser(userId: Int!): User
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!): User!
+    register(username: String!, email: String!, password: String!): User!
   }
 
 `;
