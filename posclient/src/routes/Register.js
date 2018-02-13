@@ -66,36 +66,29 @@ class Register extends React.Component {
     return (
       <div>
         <h2>Register</h2>
+
         <input
-          error={!!usernameError}
           name="username"
           onChange={this.onChange}
           value={username}
-          placeholder="Username"
-          
-        />
+          placeholder="Username" />
+
         <input
-          error={!!emailError}
           name="email"
           onChange={this.onChange}
           value={email}
-          placeholder="Email"
-          
-        />
+          placeholder="Email" />
         <input
-          error={!!passwordError}
           name="password"
           onChange={this.onChange}
           value={password}
           type="password"
-          placeholder="Password"
-          
-        />
+          placeholder="Password" />
         <button onClick={this.onSubmit}>Submit</button>
         
       </div>
     );
-  }
+  };
 }
 
 const registerMutation = gql`
