@@ -26,7 +26,7 @@ class Login extends React.Component {
     }
   };
 
-  onChange = e => {
+  onChange =(e) => {
     const { name, value } = e.target;
     this[name] = value;
   };
@@ -35,7 +35,7 @@ class Login extends React.Component {
     const { email, password } = this;
 
     return (
-      <div text>
+      <div>
         <h2>Login</h2>
         <input name="email" onChange={this.onChange} value={email} placeholder="Email" />
         <input
