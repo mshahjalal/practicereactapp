@@ -26,6 +26,7 @@ class Register extends React.Component {
     const { ok, errors } = response.data.register;
 
     if (ok) {
+      console.log("ok: ", ok, " errors: ", errors);
       this.props.history.push('/');
     } else {
       const err = {};
@@ -66,25 +67,27 @@ class Register extends React.Component {
     return (
       <div>
         <h2>Register</h2>
+        
 
-        <input
-          name="username"
-          onChange={this.onChange}
-          value={username}
-          placeholder="Username" />
+          <input
+            name="username"
+            onChange={this.onChange}
+            value={username}
+            placeholder="Username" />
 
-        <input
-          name="email"
-          onChange={this.onChange}
-          value={email}
-          placeholder="Email" />
-        <input
-          name="password"
-          onChange={this.onChange}
-          value={password}
-          type="password"
-          placeholder="Password" />
-        <button onClick={this.onSubmit}>Submit</button>
+          <input
+            name="email"
+            onChange={this.onChange}
+            value={email}
+            placeholder="Email" />
+          <input
+            name="password"
+            onChange={this.onChange}
+            value={password}
+            type="password"
+            placeholder="Password" />
+          <button onClick={this.onSubmit}>Submit</button>
+        
         
       </div>
     );
