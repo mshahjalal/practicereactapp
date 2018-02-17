@@ -10,7 +10,8 @@ const sequelize = new Sequelize('mypos', null, null, {
 });
 
 const models = {
-  User: sequelize.import('./user')
+  User: sequelize.import('./user'),
+  Team: sequelize.import('./team')
 };
 
 Object.keys(models).forEach((modelName) => {
