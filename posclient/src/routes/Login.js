@@ -20,8 +20,6 @@ class Login extends React.Component {
       variables: { email, password },
     });
 
-    console.log(response);
-
     const {
       ok, token, refreshToken, errors,
     } = response.data.login;

@@ -26,24 +26,19 @@ class Register extends React.Component {
     const { ok, errors } = response.data.register;
 
     if (ok) {
-      console.log("ok: ", ok, " errors: ", errors);
       this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
-        // err['passwordError'] = 'too long..';
         err[`${path}Error`] = message;
       });
 
       this.setState(err);
     }
-
-    //console.log(response);
   };
 
   onChange = e => {
     const { name, value } = e.target;
-    // name = "email";
     this.setState({ [name]: value });
   };
 
