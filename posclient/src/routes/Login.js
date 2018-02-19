@@ -60,18 +60,33 @@ class Login extends React.Component {
 console.log("errorList: ", errorList);
 
     return (
-      <div>
-        <h2>Login</h2>
+      // <div>
+      //   <h2>Login</h2>
+      //   <form>
         
-            <input name="email" onChange={this.onChange} value={email} placeholder="Email" />
-            <input
-              name="password"
-              onChange={this.onChange}
-              value={password}
-              type="password"
-              placeholder="Password" />
-          <button onClick={this.onSubmit}>Submit</button>
+      //       <input name="email" onChange={this.onChange} value={email} placeholder="Email" />
+      //       <input
+      //         name="password"
+      //         onChange={this.onChange}
+      //         value={password}
+      //         type="password"
+      //         placeholder="Password" />
+      //     <button onClick={this.onSubmit} class="btn btn-outline-success">Submit</button>
+      //     </form>
         
+      // </div>
+
+      <div class="container">
+        <h2>Login</h2>        
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" onChange={this.onChange} value={email} />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" onChange={this.onChange} value={password} />
+          </div>
+          <button onClick={this.onSubmit} class="btn btn-primary">Submit</button>
       </div>
     );
   }
