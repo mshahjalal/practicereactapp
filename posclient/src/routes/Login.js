@@ -57,21 +57,20 @@ class Login extends React.Component {
       errorList.push(passwordError);
     }
 
-console.log("errorList: ", errorList);
 
     return (
       
-      <div class="container">
+      <div className="container">
         <h2>Login</h2>        
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" onChange={this.onChange} value={email} />
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input type="email" className="form-control" id="email" placeholder="Enter email" name="email" onChange={this.onChange} value={email} />
           </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" onChange={this.onChange} value={password} />
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input type="password" className="form-control" id="password" placeholder="Enter password" name="password" onChange={this.onChange} value={password} />
           </div>
-          <button onClick={this.onSubmit} class="btn btn-primary">Submit</button>
+          <button onClick={this.onSubmit} className="btn btn-primary">Submit</button>
       </div>
     );
   }
