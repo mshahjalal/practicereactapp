@@ -14,3 +14,19 @@ const allUsersQuery = gql`
 `;
 
 export default graphql(allUsersQuery)(Home);
+
+/*import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+
+const Home = () => (
+  <div className='wrapper'>
+    <Sidebar />
+    <Header />
+    <div className='container'>
+      
+    </div>
+  </div>
+);
+
+
+export default Home;*/

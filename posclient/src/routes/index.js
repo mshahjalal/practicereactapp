@@ -40,14 +40,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 export default () => (
   <BrowserRouter>
-    <Switch>
-      <PrivateRoute path="/logout" exact component={Logout} />
-      <PrivateRoute path="/" exact component={Home} />
-      <Route path="/register" exact component={Register} />
-      <Route path="/login" exact component={Login} />
-      <PrivateRoute path="/create-team" exact component={CreateTeam} />
-      <PrivateRoute path="/view-team" exact component={ViewTeam} />
-
+    <Switch>     
+          <PrivateRoute path="/logout" exact component={Logout} />
+          <PrivateRoute path="/" exact component={Home} />
+          <Route path="/register" exact component={Register} />
+          <Route path="/login" exact component={Login} />
+          <PrivateRoute path="/create-team" exact component={CreateTeam} />
+          <PrivateRoute path="/view-team" exact component={ViewTeam} />
     </Switch>
   </BrowserRouter>
 );
