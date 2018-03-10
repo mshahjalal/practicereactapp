@@ -1,9 +1,9 @@
 export default `
   type Team {
     id: Int!
-    name: String!
-    owner: User!
+    name: String!    
     members: [User!]!
+    permissions: [Permission!]!
   }
 
   type CreateTeamResponse {
@@ -19,3 +19,5 @@ export default `
     createTeam(name: String!): CreateTeamResponse!
   }
 `;
+
+/*owner: User!*/
