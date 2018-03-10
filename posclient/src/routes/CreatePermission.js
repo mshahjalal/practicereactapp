@@ -1,0 +1,80 @@
+import React from 'react';
+import { extendObservable } from 'mobx';
+import { observer } from 'mobx-react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+
+class CreatePermission extends React.Component {
+  constructor(props) {
+    super(props);
+
+    extendObservable(this, {
+      name: '',
+      errors: {},
+    });
+  }
+
+  onSubmit = async () => {
+    const { name } = this;
+    let response = null;
+
+    try {
+      response = await this.props.mutate({
+        variables: { name },
+      });
+    } catch (err) {
+      this.props.history.push('/login');
+      return;
+    }
+
+    const { ok, errors } = response.data.CreatePermission;
+
+    if (ok) {
+      this.props.history.push('/');
+    } else {
+      const err = {};
+      errors.forEach(({ path, message }) => {
+        err[`${path}Error`] = message;
+      });
+
+      this.errors = err;
+    }
+  };
+
+  onChange = (e) => {
+    const { name, value } = e.target;
+    this[name] = value;
+  };
+
+  render() {
+    const { name, errors: { nameError } } = this;
+
+    const errorList = [];
+
+    if (nameError) {
+      errorList.push(nameError);
+    }
+
+    return (
+      <div>
+        <h2>Create a permission</h2>
+            <input name="name" onChange={this.onChange} value={name} placeholder="Name" />
+          <button onClick={this.onSubmit}>Submit</button>
+      </div>
+    );
+  }
+}
+
+const createPermissionMutation = gql`
+  mutation($name: String!) {
+    createPermission(name: $name) {
+      ok
+      errors {
+        path
+        message
+      }
+    }
+  }
+`;
+
+export default graphql(createPermissionMutation)(observer(CreatePermission));
