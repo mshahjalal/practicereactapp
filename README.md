@@ -14,4 +14,4 @@
 # 1. open new terminal from posclient folder 
 # 2. npm install
 # 3. npm start
-# browse: http://localhost:3000
+# browse: http://localhost:3000/view-branch

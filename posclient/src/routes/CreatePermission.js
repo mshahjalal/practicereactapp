@@ -31,7 +31,8 @@ class CreatePermission extends React.Component {
     const { ok, errors } = response.data.createPermission;
 
     if (ok) {
-      this.props.history.push('/');
+      //this.props.history.push('/view-branch');
+      
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
