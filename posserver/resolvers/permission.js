@@ -8,13 +8,15 @@ export default {
   },
   Mutation: {
     createPermission: requiresAuth.createResolver(async (parent, args, { models, user }) => {
+
+      console.log("create new permission for this user...");
+
       try {
         await models.Permission.create({ ...args });
         return {
           ok: true,
         };
       } catch (err) {
-        console.log(err);
         return {
           ok: false,
           errors: formatErrors(err),

@@ -13,7 +13,7 @@ export default `
   }
 
   type Query {
-    allPermissions: [Team!]!
+    allPermissions: [Permission!]!
   }
 
   type Mutation {

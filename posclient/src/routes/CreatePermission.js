@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 class CreatePermission extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -26,8 +27,8 @@ class CreatePermission extends React.Component {
       this.props.history.push('/login');
       return;
     }
-
-    const { ok, errors } = response.data.CreatePermission;
+  
+    const { ok, errors } = response.data.createPermission;
 
     if (ok) {
       this.props.history.push('/');
@@ -57,7 +58,7 @@ class CreatePermission extends React.Component {
 
     return (
       <div>
-        <h2>Create a permission</h2>
+        <h2>Create a branch</h2>
             <input name="name" onChange={this.onChange} value={name} placeholder="Name" />
           <button onClick={this.onSubmit}>Submit</button>
       </div>
