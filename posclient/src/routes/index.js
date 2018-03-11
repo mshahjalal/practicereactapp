@@ -9,6 +9,7 @@ import CreateTeam from './CreateTeam';
 import Logout from './Logout';
 import ViewTeam from './ViewTeam';
 import CreatePermission from './CreatePermission';
+import ViewPermission from './ViewPermission';
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('token');
@@ -48,6 +49,7 @@ export default () => (
           <Route path="/login" exact component={Login} />
           <PrivateRoute path="/create-team" exact component={CreateTeam} />
           <PrivateRoute path="/create-branch" exact component={CreatePermission} />
+          <PrivateRoute path="/view-branch" exact component={ViewPermission} />
           <PrivateRoute path="/view-team" exact component={ViewTeam} />
     </Switch>
   </BrowserRouter>
