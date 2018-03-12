@@ -7,6 +7,10 @@ export default `
     teamPermissions: [Team!]!
   }
 
+  type Subscription {
+    newPermission(id: Int!): Permission!
+  }
+
   type CreatePermissionResponse {
     ok: Boolean!
     errors: [Error!]
