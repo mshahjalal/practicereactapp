@@ -12,7 +12,7 @@ export default {
     newPermission: {
       subscribe: withFilter(
         () => pubsub.asyncIterator(NEW_PERMISSION),
-        (payload, args) => payload.id === args.id,
+        (payload, args) => payload && args,
       ),
     },
   },
@@ -25,10 +25,13 @@ export default {
       try {
         const permission = await models.Permission.create({ ...args });
 
-        pubsub.publish(NEW_PERMISSION, {
-          id: args.id,
-          newPermission: permission.dataValues
-        });
+        const asyncPublishFunc = async () => {
+          pubsub.publish(NEW_PERMISSION, {
+            newPermission: permission.dataValues
+          });
+        }
+
+        asyncPublishFunc();       
 
         return {
           ok: true,
