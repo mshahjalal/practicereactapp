@@ -4,8 +4,8 @@ import gql from 'graphql-tag';
 
 
 const newPermissionSubscription = gql`
-  subscription {
-    newPermission{
+  subscription($name: String!) {
+    newPermission(name: $name){
       id
       name
     }
@@ -18,7 +18,7 @@ class Permissions extends React.Component {
     this.props.data.subscribeToMore({
       document: newPermissionSubscription,
       variables: {
-        //channelId: this.props.channelId,
+        name: this.props.name
       },
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData) {
@@ -35,16 +35,29 @@ class Permissions extends React.Component {
 
   render() {
     const { data: { loading, allPermissions } } = this.props;
-    const permissions = [...allPermissions];
+    //const permissionList = [ ...allPermissions ];
 
-    return loading ? null : (
+    if (loading) {
+        return null;
+    }
+
+    console.log("allPermissions: ", allPermissions);
+
+    return (
       <div>
-      <br/>
-      <br/>
-       <h2>Show Branches</h2>
-       <div> {permissions.map(u => <p key={u.id}>{u.name}</p>)}</div>
-    </div>
+          <h2>Show Branches</h2>
+        </div>
     );
+
+
+    // return loading ? null : (
+    //   <div>
+    //   <br/>
+    //   <br/>
+    //    <h2>Show Branches</h2>
+    //    <div> {permissionList.map(u => <p key={u.id}>{u.name}</p>)}</div>
+    // </div>
+    // );
   }
 
 
@@ -67,8 +80,8 @@ class Permissions extends React.Component {
 
 
 const allPermissionsQuery = gql`
-  query {
-    allPermissions {
+  query($name: String!) {
+    allPermissions(name: $name) {
       id
       name
     }
@@ -78,7 +91,7 @@ const allPermissionsQuery = gql`
 
 export default graphql(allPermissionsQuery, {
   variables: props => ({
-    //channelId: props.channelId,
+    name: props.name,
   }),
 })(Permissions);
 

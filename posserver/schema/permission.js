@@ -8,7 +8,7 @@ export default `
   }
 
   type Subscription {
-    newPermission: Permission!
+    newPermission(name: String!): Permission!
   }
 
   type CreatePermissionResponse {

@@ -1,25 +1,40 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+// import { graphql } from 'react-apollo';
+// import gql from 'graphql-tag';
 import Permissions from '../components/Permissions';
 import CreatePermission from './CreatePermission';
 
 
-const ViewPermission = ({ 
-    data: { loading, allPermissions } 
-}) => {
+// const ViewPermission = () => {
+//     return (
+//         <div>
+//             <CreatePermission />            
+//             <Permissions name='NEW_PERMISSION'/>            
+//         </div>
+//     );
+// }
 
-    if (loading) {
-        return null;
-    }
+// export default ViewPermission;
+
+
+
+const ViewPermission = (
+    // { 
+    // data: { loading, allPermissions } 
+    // }
+) => {
+
+    // if (loading) {
+    //     return null;
+    // }
 
     //const permissions = [...allPermissions];
 
     return (
         <div>
-            <CreatePermission />
+            <CreatePermission name='NEW_PERMISSION'/>
             
-            <Permissions />
+            <Permissions name='NEW_PERMISSION' />
             
         </div>
     );
@@ -28,13 +43,15 @@ const ViewPermission = ({
 
 //allPermissions.map(u => <h1 key={u.id}>{u.name}</h1>);
 
-const allPermissionsQuery = gql`
-  {
-    allPermissions {
-      id
-      name
-    }
-  }
-`;
+// const allPermissionsQuery = gql`
+//   {
+//     allPermissions {
+//       id
+//       name
+//     }
+//   }
+// `;
 
-export default graphql(allPermissionsQuery)(ViewPermission);
+export default ViewPermission;
+
+//export default graphql(allPermissionsQuery)(ViewPermission);

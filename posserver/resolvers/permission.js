@@ -12,7 +12,8 @@ export default {
     newPermission: {
       subscribe: withFilter(
         () => pubsub.asyncIterator(NEW_PERMISSION),
-        (payload, args) => payload && args,
+        //(payload, args) => payload && args,
+        (payload, args) => payload.name === args.name
       ),
     },
   },
@@ -27,7 +28,10 @@ export default {
 
         const asyncPublishFunc = async () => {
           pubsub.publish(NEW_PERMISSION, {
-            newPermission: permission.dataValues
+            name: args.name,
+            newPermission: {
+              ...permission.dataValues
+            },
           });
         }
 
