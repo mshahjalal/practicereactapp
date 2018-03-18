@@ -17,7 +17,7 @@ export default `
   }
 
   type Query {
-    allPermissions: [Permission!]!
+    allPermissions(name: String!): [Permission!]!
   }
 
   type Mutation {

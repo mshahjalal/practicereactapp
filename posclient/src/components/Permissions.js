@@ -24,64 +24,39 @@ class Permissions extends React.Component {
         if (!subscriptionData) {
           return prev;
         }
+          
 
         return {
           ...prev,
-          allPermissions: [...prev.allPermissions, subscriptionData.newPermission],
+          allPermissions: [...prev.allPermissions, subscriptionData.data.newPermission],
         };
       },
     });
   }
 
+  
+
   render() {
     const { data: { loading, allPermissions } } = this.props;
-    //const permissionList = [ ...allPermissions ];
+   
 
-    if (loading) {
-        return null;
-    }
-
-    console.log("allPermissions: ", allPermissions);
-
-    return (
+    return loading ? null : (
       <div>
-          <h2>Show Branches</h2>
-        </div>
+      <br/>
+      <br/>
+       <h2>Show Branches</h2>
+       <div> {allPermissions.map(u => <p key={u.id}>{u.name}</p>)}</div>
+    </div>
     );
-
-
-    // return loading ? null : (
-    //   <div>
-    //   <br/>
-    //   <br/>
-    //    <h2>Show Branches</h2>
-    //    <div> {permissionList.map(u => <p key={u.id}>{u.name}</p>)}</div>
-    // </div>
-    // );
   }
-
 
 }
 
 
-// const Permissions = ({ data: { allPermissions,} }) => {
-//   const permissions = [...allPermissions];
-
-//   return(
-//     <div>
-//       <br/>
-//       <br/>
-//        <h2>Show Branches</h2>
-//        <div> {permissions.map(u => <p key={u.id}>{u.name}</p>)}</div>
-//     </div>
-//   );
-
-// }
-
 
 const allPermissionsQuery = gql`
   query($name: String!) {
-    allPermissions(name: $name) {
+    allPermissions(name:$name){
       id
       name
     }
@@ -94,5 +69,3 @@ export default graphql(allPermissionsQuery, {
     name: props.name,
   }),
 })(Permissions);
-
-//export default graphql(allPermissionsQuery)(Permissions);

@@ -11,14 +11,13 @@ export default {
   Subscription: {
     newPermission: {
       subscribe: withFilter(
-        () => pubsub.asyncIterator(NEW_PERMISSION),
-        //(payload, args) => payload && args,
+        () => pubsub.asyncIterator(NEW_PERMISSION),        
         (payload, args) => payload.name === args.name
       ),
     },
   },
   Query: {
-    allPermissions: requiresAuth.createResolver(async (parent, args, { models, user }) =>
+    allPermissions: requiresAuth.createResolver(async (parent, {name}, { models, user }) =>
       models.Permission.findAll()),
   },
   Mutation: {
