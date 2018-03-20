@@ -15,25 +15,43 @@ const newPermissionSubscription = gql`
 class Permissions extends React.Component {
 
   componentWillMount() {
-    this.props.data.subscribeToMore({
-      document: newPermissionSubscription,
-      variables: {
-        name: this.props.name
-      },
-      updateQuery: (prev, { subscriptionData }) => {
-        if (!subscriptionData) {
-          return prev;
-        }
-          
-
-        return {
-          ...prev,
-          allPermissions: [...prev.allPermissions, subscriptionData.data.newPermission],
-        };
-      },
-    });
+    this.unsubscribe = this.subscribe(this.props.name);   
   }
 
+  /*Start not need for this functionality*/
+  componentWillReceiveProps({ name }) {
+    if (this.props.name !== name) {
+      if (this.unsubscribe) {
+        this.unsubscribe();
+      }
+      this.unsubscribe = this.subscribe(name);
+    }
+  }
+  /*end not need for this functionality*/
+
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
+  }
+
+  subscribe = name => this.props.data.subscribeToMore({
+    document: newPermissionSubscription,
+    variables: {
+      //name: this.props.name
+      name
+    },
+    updateQuery: (prev, { subscriptionData }) => {
+      if (!subscriptionData) {
+        return prev;
+      }
+    
+      return {
+        ...prev,
+        allPermissions: [...prev.allPermissions, subscriptionData.data.newPermission],
+      };
+    },
+  });
   
 
   render() {
@@ -68,4 +86,7 @@ export default graphql(allPermissionsQuery, {
   variables: props => ({
     name: props.name,
   }),
+  options: {
+    fetchPolicy: 'network-only', //data get from netwoek(means server) not header cache(browser header cache)
+  }
 })(Permissions);

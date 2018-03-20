@@ -12,7 +12,7 @@ export default {
     newPermission: {
       subscribe: withFilter(
         () => pubsub.asyncIterator(NEW_PERMISSION),        
-        (payload, args) => payload.name === args.name
+        (payload, args) => payload.name !== args.name
       ),
     },
   },
