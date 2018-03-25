@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import decode from 'jwt-decode';
+//import decode from 'jwt-decode';
 
 import Home from './Home';
 import Register from './Register';
@@ -10,19 +10,9 @@ import Logout from './Logout';
 import ViewTeam from './ViewTeam';
 import CreatePermission from './CreatePermission';
 import ViewPermission from './ViewPermission';
+import isAuthenticated from '../auth.js';
 
-const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  const refreshToken = localStorage.getItem('refreshToken');
-  try {
-    decode(token);
-    decode(refreshToken);
-  } catch (err) {
-    return false;
-  }
 
-  return true;
-};
 
 const PrivateRoute = ({ component: Component, ...rest }) => ( 
   <Route

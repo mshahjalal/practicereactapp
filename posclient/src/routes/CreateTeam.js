@@ -3,6 +3,7 @@ import { extendObservable } from 'mobx';
 import { observer } from 'mobx-react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import AppLayout from '../components/AppLayout';
 
 class CreateTeam extends React.Component {
   constructor(props) {
@@ -57,10 +58,16 @@ class CreateTeam extends React.Component {
 
     return (
       <div>
-        <h2>Create a team</h2>
-            <input name="name" onChange={this.onChange} value={name} placeholder="Name" />
-          <button onClick={this.onSubmit}>Submit</button>
-      </div>
+           <AppLayout />
+           <div className="container">
+              <h2>Create a team</h2>
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input className="form-control" name="name" onChange={this.onChange} value={name} placeholder="Name" />
+                </div>              
+                <button className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
+            </div>
+      </div>     
     );
   }
 }

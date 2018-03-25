@@ -59,9 +59,12 @@ class CreatePermission extends React.Component {
 
     return (
       <div>
-        <h2>Create a branch</h2>
-            <input name="name" onChange={this.onChange} value={name} placeholder="Name" />
-          <button onClick={this.onSubmit}>Submit</button>
+            <h2>Create a branch</h2>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input className="form-control" name="name" onChange={this.onChange} value={name} placeholder="Name" />
+            </div>
+            <button className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
       </div>
     );
   }

@@ -1,5 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
-export default () => (
-    <div className='container'></div>
+
+const AppLayout = () => (
+    <div className="container-fluid">
+        <Header />             
+    </div>
 );
+
+
+export default AppLayout;

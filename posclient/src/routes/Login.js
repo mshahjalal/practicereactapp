@@ -3,6 +3,8 @@ import { extendObservable } from 'mobx';
 import { observer } from 'mobx-react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import AppLayout from '../components/AppLayout';
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -60,17 +62,21 @@ class Login extends React.Component {
 
     return (
       
-      <div className="container">
-        <h2>Login</h2>        
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" className="form-control" id="email" placeholder="Enter email" name="email" onChange={this.onChange} value={email} />
+      <div>
+        <AppLayout />
+          <div className="container">
+            <h2>Login</h2>        
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input type="email" className="form-control" id="email" placeholder="Enter email" name="email" onChange={this.onChange} value={email} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input type="password" className="form-control" id="password" placeholder="Enter password" name="password" onChange={this.onChange} value={password} />
+            </div>
+            <button onClick={this.onSubmit} className="btn btn-primary">Submit</button>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" placeholder="Enter password" name="password" onChange={this.onChange} value={password} />
-          </div>
-          <button onClick={this.onSubmit} className="btn btn-primary">Submit</button>
+        
       </div>
     );
   }

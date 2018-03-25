@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import AppLayout from '../components/AppLayout';
 
 class Register extends React.Component {
   state = {
@@ -62,29 +63,24 @@ class Register extends React.Component {
 
     return (
       <div>
-        <h2>Register</h2>
-        
+          <AppLayout />
 
-          <input
-            name="username"
-            onChange={this.onChange}
-            value={username}
-            placeholder="Username" />
-
-          <input
-            name="email"
-            onChange={this.onChange}
-            value={email}
-            placeholder="Email" />
-          <input
-            name="password"
-            onChange={this.onChange}
-            value={password}
-            type="password"
-            placeholder="Password" />
-          <button onClick={this.onSubmit}>Submit</button>
-        
-        
+          <div className="container">
+            <h2>Register</h2>        
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <input name="username" onChange={this.onChange} value={username} className="form-control" placeholder="Username" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input name="email" className="form-control" onChange={this.onChange} value={email} placeholder="Email" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input name="password" className="form-control" onChange={this.onChange} value={password} type="password" placeholder="Password" />
+              </div>
+              <button onClick={this.onSubmit} className="btn btn-primary cursor-pointer">Submit</button>
+          </div>
       </div>
     );
   };
