@@ -10,6 +10,10 @@ export default {
   Mutation: {
     createTeam: requiresAuth.createResolver(async (parent, args, { models, user }) => {
       try {
+   
+        args.default = false;
+        args.type = 'custom';
+
         //await models.Team.create({ ...args, owner: user.id });
         await models.Team.create({ ...args });
         return {

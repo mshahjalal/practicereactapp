@@ -11,6 +11,7 @@ import ViewTeam from './ViewTeam';
 import CreatePermission from './CreatePermission';
 import ViewPermission from './ViewPermission';
 import isAuthenticated from '../auth.js';
+import AssignTeamMember from './AssignTeamMember';
 
 
 
@@ -41,6 +42,7 @@ export default () => (
           <PrivateRoute path="/create-branch" exact component={CreatePermission} />
           <PrivateRoute path="/view-branch" exact component={ViewPermission} />
           <PrivateRoute path="/view-team" exact component={ViewTeam} />
+          <PrivateRoute path="/assign-team-member/:teamId?" exact component={AssignTeamMember} />
     </Switch>
   </BrowserRouter>
 );
