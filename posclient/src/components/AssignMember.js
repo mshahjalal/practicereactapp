@@ -3,35 +3,41 @@ import { extendObservable } from 'mobx';
 import { observer } from 'mobx-react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import _ from 'lodash';
+
 
 class AssignMember extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("props: ", props);
+   
     extendObservable(this, {
-      name: '',
+      userId: '',
+      teamId: this.props.currentTeamId,
       errors: {},
     });
   }
   
 
   onSubmit = async () => {
-    const { name } = this;
+    const { teamId, userId } = this;
     let response = null;
 
     try {
+      console.log("teamId", teamId, "userId", userId,);
       response = await this.props.mutate({
-        variables: { name },
+        variables: { userId, teamId },
       });
     } catch (err) {
-      this.props.history.push('/login');
+      console.log("err: ", err);
+      //this.props.history.push('/login');
       return;
     }
   
-    const { ok, errors } = response.data.createPermission;
+    const { ok, errors } = response.data.assignTeamMember;
 
     if (ok) {
+      console.log("ok.....");
       //this.props.history.push('/view-branch');
       
     } else {
@@ -49,20 +55,33 @@ class AssignMember extends React.Component {
     this[name] = value;
   };
 
+  
+
   render() {
-    const { name, errors: { nameError } } = this;
+
+    const  memberList  = this.props.members;    
+
+    const { errors: { nameError } } = this;
 
     const errorList = [];
 
     if (nameError) {
       errorList.push(nameError);
     }
+    
+
+    let userOptions = _.map(memberList, (userInfo) => {
+      return <option key={`option_${userInfo.id}`} value={userInfo.id}>{userInfo.email}</option>;
+    });
 
     return (
       <div>
             <h2>Assign member</h2>
             <div className="form-group">
-              <input className="form-control" name="name" onChange={this.onChange} value={name} placeholder="Name" />
+              <select className="form-control" onChange={this.onChange} value={this.userId} name="userId">
+                <option key="option_0" value="0">Select member</option>;
+                {userOptions}
+              </select>
             </div>
             <button className="btn btn-primary" onClick={this.onSubmit}>Assign</button>
       </div>
@@ -70,9 +89,9 @@ class AssignMember extends React.Component {
   }
 }
 
-const createPermissionMutation = gql`
-  mutation($name: String!) {
-    createPermission(name: $name) {
+const assignTeamMemberMutation = gql`
+  mutation($teamId: Int!, $userId: Int!) {
+    assignTeamMember(teamId: $teamId, userId: $userId) {
       ok
       errors {
         path
@@ -82,4 +101,4 @@ const createPermissionMutation = gql`
   }
 `;
 
-export default graphql(createPermissionMutation)(observer(AssignMember));
+export default graphql(assignTeamMemberMutation)(observer(AssignMember));

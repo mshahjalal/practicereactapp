@@ -2,7 +2,9 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
+
 import AssignMember from '../components/AssignMember';
+import TeamMembers from '../components/ViewTeamMember';
 
 
 //import Teams from '../components/Teams';
@@ -16,20 +18,25 @@ import AssignMember from '../components/AssignMember';
 //     />
 //   ];
 
-const AddTeamMember = ({ data: { allUsers }, currentTeamId }) => {
-    console.log("currentTeamId: ", currentTeamId);
+const AddTeamMember = ({ data: { loading, allUsers }, currentTeamId }) => {
+        
+    if(loading) return false;
+
     const allUsersList = allUsers ? [...allUsers] : [];
+    
 
     return (
         <div>
-            <AssignMember key="team-assign" members={allUsersList.map(u =>({
+            <AssignMember key="team-assign" currentTeamId={currentTeamId} members={allUsersList.map(u =>({
                 id: u.id,
                 email: u.email
             }))
             } />
 
-            <h2>Show user list</h2>
-            {allUsersList.map(u => <p key={u.id}>{u.email} </p>)}
+            <TeamMembers teamId={currentTeamId} />
+
+            {/* <h2>Show team member list</h2>
+            {allUsersList.map(u => <p key={u.id}>{u.email} </p>)} */}
         </div>
     );
 }

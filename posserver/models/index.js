@@ -12,7 +12,8 @@ const sequelize = new Sequelize('mypos', null, null, {
 const models = {
   User: sequelize.import('./user'),
   Team: sequelize.import('./team'),
-  Permission: sequelize.import('./permission')
+  Permission: sequelize.import('./permission'),
+  TeamMember: sequelize.import('./teamMember')
 };
 
 Object.keys(models).forEach((modelName) => {
