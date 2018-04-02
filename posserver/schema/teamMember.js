@@ -3,11 +3,12 @@ export default `
     id: Int!
     teamId: Int!
     userId: Int!
+    user: [User]
   }
 
-    type Subscription {
-        newTeamMember(teamId: Int!): TeamMember!
-      }
+  type Subscription {
+    newTeamMember(teamId: Int!): TeamMember!
+  }
 
   type AssignTeamMemberResponse {
     ok: Boolean!

@@ -9,13 +9,20 @@ export default (sequelize, DataTypes) => {
     });
   
     TeamMember.associate = (models) => {
-        // TeamMember.belongsToMany(models.Team, {
-        //     through: 'teamPermission',
-        //     foreignKey: {
-        //     name: 'permissionId',
-        //     field: 'permission_id',
-        //     },
-        // });
+        TeamMember.belongsToMany(models.Team, {
+            through: 'MemberOfTeam',
+            foreignKey: {
+            name: 'teamId',
+            field: 'team_id',
+            },
+        });
+        TeamMember.belongsToMany(models.User, {
+          through: 'UserTeamMember',
+          foreignKey: {
+            name: 'userId',
+            field: 'user_id',
+          },
+        });
     };
   
     return TeamMember;
