@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const TeamMember = sequelize.define('teamMember', {
+    const Member = sequelize.define('member', {
       teamId: {
         type: DataTypes.INTEGER
       },
@@ -8,23 +8,23 @@ export default (sequelize, DataTypes) => {
       }
     });
   
-    TeamMember.associate = (models) => {
-        // TeamMember.belongsToMany(models.Team, {
-        //     through: 'MemberOfTeam',
-        //     foreignKey: {
-        //     name: 'teamId',
-        //     field: 'team_id',
-        //     },
-        // });
-        // TeamMember.belongsToMany(models.User, {
-        //   through: 'UserTeamMember',
-        //   foreignKey: {
-        //     name: 'userId',
-        //     field: 'user_id',
-        //   },
-        // });
+    Member.associate = (models) => {
+        Member.belongsToMany(models.Team, {
+            through: models.Member,
+            foreignKey: {
+            name: 'teamId',
+            field: 'team_id',
+            },
+        });
+        Member.belongsToMany(models.User, {
+          through: models.Member,
+          foreignKey: {
+            name: 'userId',
+            field: 'user_id',
+          },
+        });
     };
   
-    return TeamMember;
+    return Member;
   };
   

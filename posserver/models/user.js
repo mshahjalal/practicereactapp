@@ -50,12 +50,12 @@ export default (sequelize, DataTypes) => {
   );
 
   User.associate = (models) => {
-    // User.belongsToMany(models.Team, {
-    //   foreignKey: {
-    //     name: 'userId',
-    //     field: 'user_id',
-    //   },
-    // });
+    User.hasMany(models.Member, {
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
   };
 
   return User;

@@ -18,14 +18,14 @@ export default {
   },
   Query: {
     allTeamMembers: requiresAuth.createResolver(async (parent, {teamId}, { models, user }) =>
-      models.TeamMember.findAll()),
+      models.Member.findAll({ where: { teamId: teamId } }, { raw: true })),
   },
   Mutation: {
     assignTeamMember: requiresAuth.createResolver(async (parent, args, { models, user }) => {
       try {
 
         console.log("args: ", args);
-        const teamMember = await models.TeamMember.create({ ...args });
+        const teamMember = await models.Member.create({ ...args });
 
         const asyncPublishFunc = async () => {
           pubsub.publish(NEW_TEAM_MEMBER, {

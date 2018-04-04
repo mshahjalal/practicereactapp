@@ -1,5 +1,5 @@
 export default `
-  type TeamMember {
+  type Member {
     id: Int!
     teamId: Int!
     userId: Int!
@@ -7,7 +7,7 @@ export default `
   }
 
   type Subscription {
-    newTeamMember(teamId: Int!): TeamMember!
+    newTeamMember(teamId: Int!): Member!
   }
 
   type AssignTeamMemberResponse {
@@ -16,7 +16,7 @@ export default `
   }
 
   type Query {
-    allTeamMembers(teamId: Int!): [TeamMember!]!
+    allTeamMembers(teamId: Int!): [Member!]!
   }
 
   type Mutation {
