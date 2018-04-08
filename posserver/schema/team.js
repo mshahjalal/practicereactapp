@@ -5,6 +5,7 @@ export default `
     default: Boolean!
     type: String!
     permissions: [Permission!]!
+    members: [User!]!
   }
 
   type CreateTeamResponse {

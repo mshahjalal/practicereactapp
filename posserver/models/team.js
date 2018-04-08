@@ -15,13 +15,13 @@ export default (sequelize, DataTypes) => {
 
   Team.associate = (models) => {    
 
-    // Team.belongsToMany(models.User, {
-    //   through: 'member',
-    //   foreignKey: {
-    //     name: 'teamId',
-    //     field: 'team_id',
-    //   },
-    // });
+    Team.belongsToMany(models.User, {
+      through: models.Member,
+      foreignKey: {
+        name: 'teamId',
+        field: 'team_id',
+      },
+    });
     // Team.belongsToMany(models.Permission, {
     //   through: 'teamPermission',
     //   foreignKey: {
